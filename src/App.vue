@@ -9,14 +9,31 @@
 </template>
 
 <script>
+  // app.vue - это, грубо говоря, шаблон, который применяется к каждому последующему компоненту/представлению vue
   import Header from './components/TheHeader.vue'
   import Footer from './components/TheFooter.vue'
+  import axios from 'axios'
   export default {
-  
-  components: {
-    Header,
-    Footer
-  }
+    
+    // устанавливаю шапку и подвал
+    components: {
+      Header,
+      Footer
+    },
+
+    // устанавливаю токен и хэдер
+    beforeCreate() {
+
+      this.$store.commit('initialize')
+
+      const token = this.$store.state.token
+
+      if (token) {
+          axios.defaults.headers.common['Authorization'] = "Token " + token
+      } else {
+          axios.defaults.headers.common['Authorization'] = ""
+      }
+    },
   }
 </script>
 
