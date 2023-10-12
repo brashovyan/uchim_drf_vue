@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="text" v-model="username" placeholder="username">
+        <input type="email" v-model="email" placeholder="email">
         <input type="password" v-model="password1" placeholder="password">
         <input type="password" v-model="password2" placeholder="repeat password">
         <button @click="register()">Зарегистрироваться</button>
@@ -15,7 +15,7 @@ export default {
     name: 'SignUp',
     data() {
         return {
-            username: '',
+            email: '',
             password1: '',
             password2: '',
             errors: [],
@@ -27,7 +27,7 @@ export default {
             // сперва я проверяю на фронте, что юзер всё заполнил
             this.errors = []
 
-            if (this.username === '') {
+            if (this.email === '') {
                 this.errors.push('The username is missing')
             }
 
@@ -42,7 +42,7 @@ export default {
             // если юзер всё заполнил, то пытаемся регаться
             if (!this.errors.length) {
                 const formData = {
-                    username: this.username,
+                    email: this.email,
                     password: this.password1
                 }
 
@@ -60,7 +60,7 @@ export default {
 
                                 // формирую данные, которые отправлю на сервак (json'чик)
                                 const formData = {
-                                    username: this.username,
+                                    email: this.email,
                                     password: this.password1
                                 }
 

@@ -1,8 +1,17 @@
+<!-- Отображение сущностей с картинками и маркдовн-->
+
 <template>
   <div class="home">
     <h1>Домашняя страница</h1>
     <button @click="getData()">Кнопка</button>
-    <p>{{ data }}</p>
+    <!-- <p>{{ data }}</p> -->
+    <template v-for="(women, key) in data" :key="key">
+      <p>{{  women.title }}</p>
+      <img v-bind:src="women.photo" width="100" height="100">
+      <div v-html="markdown(women.myfield)"></div>
+      <p>---------------------------------------------------------</p>
+    </template>
+    
     <p>{{ username }}</p>
     {{ errors }}
 
@@ -14,6 +23,7 @@
 
 <script>
 import axios from "axios";
+import { marked } from 'marked';
 
 export default {
   data() {
@@ -24,12 +34,24 @@ export default {
     };
   },
 
+  computed: {
+   markdownToHtml(){
+    return marked("# Hello");
+   }
+ },
+
+
+
   // это название страницы в закладках браузера
   mounted() {
         document.title = 'Главная'
     },
 
   methods: {
+    markdown(s){
+      return marked(s);
+    },
+
     async getData() {
        // формирую данные, которые отправлю на сервак (json'чик)
       // const formData = {
@@ -39,9 +61,9 @@ export default {
 
       // отправляю на сервак пост запрос
       await axios
-          .get("tasks/")
+          .get("womenlist/")
           .then(response => {
-              this.data = response.data.tasks
+              this.data = response.data
           })
           // здесь обрабатываем ошибки
           .catch(error => {
@@ -60,7 +82,7 @@ export default {
       await axios
           .get("auth/users/me/")
           .then(response => {
-              this.username = response.data.username
+              this.username = response.data
           })
           // здесь обрабатываем ошибки
           .catch(error => {

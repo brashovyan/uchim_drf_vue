@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input v-model="username" type="text">
+        <input v-model="email" type="email">
         <input v-model="password" type="password">
         <button @click="login()">Войти</button>
         {{ errors }}
@@ -14,7 +14,7 @@ export default {
     name: 'LogIn',
     data() {
         return {
-            username: '',
+            email: '',
             password: '',
             errors: []
         }
@@ -35,7 +35,7 @@ export default {
 
             // формирую данные, которые отправлю на сервак (json'чик)
             const formData = {
-                username: this.username,
+                email: this.email,
                 password: this.password
             }
 

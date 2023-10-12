@@ -22,3 +22,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+библиотеки:
+router
+vuex
+marked
+npm install @babel/plugin-transform-private-methods --save-dev
+и в babel.config.js вписываем "plugins": ["@babel/plugin-transform-private-methods"]
