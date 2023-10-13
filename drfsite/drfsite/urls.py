@@ -13,25 +13,16 @@ from women import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # Если мы хотим апи, то обращаемся по этому адресу
+    path('api/v1/admin/', admin.site.urls),
     path("api/v1/", include("women.urls")),
 
-    # Если мы хотим фронт (обычный сайтик), то пишем любой запрос полсе /app/, он вызовет index.html, а там в свою очередь vue сам
-    # разберётся какой адрес и чё выдать
-    # re_path(r'app/*', TemplateView.as_view(template_name="index.html")),
-
-    # Простой переброс на app/
-    path('', RedirectView.as_view(url='/app/')),
-
-    # вообще авторизацию можно впихнуть именно в приложение апи, но не суть
-    # path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    # path('api/v1/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    # крч, всё, что относится к бэку - это api/v1/, media/ и static/
+    # всё остальное примет на себя фронт
 
     path('api/v1/auth/', include('djoser.urls')),
     path('api/v1/auth/', include('djoser.urls.authtoken')),
 
+    # окей, это исключение
     path('markdownx/', include('markdownx.urls')),
 ]
 
