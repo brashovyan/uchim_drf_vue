@@ -22,7 +22,8 @@ from django.dispatch import receiver
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        print(f"{instance} создан, делай чё хочешь)")
+        # print(f"{instance} создан, делай чё хочешь)")
+        pass
 
 
 class ActivateUser(APIView):
