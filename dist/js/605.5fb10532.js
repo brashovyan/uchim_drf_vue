@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkuchim_vue"]=self["webpackChunkuchim_vue"]||[]).push([[605],{8605:function(t,u,e){e.r(u),e.d(u,{default:function(){return h}});var a=e(3396),n=e(7139);const r={class:"home"};function s(t,u,e,s,c,i){return(0,a.wg)(),(0,a.iD)("div",r,[(0,a._)("p",null,(0,n.zw)(c.data),1)])}var c={data(){return{data:this.$route.params.id}},methods:{}},i=e(89);const d=(0,i.Z)(c,[["render",s]]);var h=d}}]);
+//# sourceMappingURL=605.5fb10532.js.map

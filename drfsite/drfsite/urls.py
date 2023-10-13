@@ -19,7 +19,7 @@ urlpatterns = [
 
     # Если мы хотим фронт (обычный сайтик), то пишем любой запрос полсе /app/, он вызовет index.html, а там в свою очередь vue сам
     # разберётся какой адрес и чё выдать
-    re_path(r'app/*', TemplateView.as_view(template_name="index.html")),
+    # re_path(r'app/*', TemplateView.as_view(template_name="index.html")),
 
     # Простой переброс на app/
     path('', RedirectView.as_view(url='/app/')),
